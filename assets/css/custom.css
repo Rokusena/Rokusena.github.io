@@ -30,7 +30,7 @@ h1 {
 h2 {
   font-size: 2rem;
   line-height: 1.2;
-  color: #ffffff;
+  color: #cf6d6d;
 }
 
 h3 {
@@ -144,5 +144,91 @@ section .content,
   background: #1e40af !important;     
   transform: translateY(-2px) !important;
 }
+
+.cv-list-numbered {
+  counter-reset: cv-counter;
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.cv-list-numbered > li {
+  counter-increment: cv-counter;
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+.cv-list-numbered > li::before {
+  content: counter(cv-counter);
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cv-list-bullets {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.cv-list-bullets li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.cv-list-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: #10b981; 
+}
+
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.services-table th,
+.services-table td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+
+.services-table thead th {
+  background: #111827;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.services-table tbody td {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.services-table tbody tr:nth-child(odd) {
+  background: #f9fafb;
+}
+
+.services-table tbody tr:hover {
+  background: #e0edff;
+}
+
 
 
