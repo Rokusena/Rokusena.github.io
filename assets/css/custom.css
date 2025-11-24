@@ -301,5 +301,83 @@ body {
   color: #333;
 }
 
+.animated-services {
+  background: linear-gradient(120deg, #6a11cb, #2575fc, #ff6b9d, #ff4d4f);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
 
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.about {
+  position: relative;
+}
+
+.about .shape {
+  position: absolute;
+  opacity: 0.15;
+  animation: floatShape 6s ease-in-out infinite alternate;
+}
+
+
+.shape.circle {
+  width: 120px;
+  height: 120px;
+  background: #ff4d4f;
+  border-radius: 50%;
+  top: 10%;
+  left: 5%;
+}
+
+
+.shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-bottom: 120px solid #2575fc;
+  top: 40%;
+  right: 10%;
+  transform-origin: center;
+  animation: rotateShape 10s linear infinite;
+}
+
+.shape.square {
+  width: 90px;
+  height: 90px;
+  background: #6a11cb;
+  top: 75%;
+  left: 20%;
+  animation: scaleShape 5s ease-in-out infinite;
+}
+
+@keyframes floatShape {
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
+}
+
+@keyframes rotateShape {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scaleShape {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .shape,
+  .animated-services {
+    animation: none !important;
+  }
+}
 
