@@ -780,87 +780,60 @@ Studijų forma ir trukmė –  nuolatinės studijos (4 metai)</p>
     </section><!-- /Portfolio Section -->
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <form id="contactForm">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Contact</span>
-        <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam</p>
-      </div><!-- End Section Title -->
+  <div class="row gy-4">
+    <div class="col-md-6">
+      <input type="text" id="fname" class="form-control" placeholder="Vardas">
+      <small class="error-message"></small>
+    </div>
 
-      <div class="container">
+    <div class="col-md-6">
+      <input type="text" id="lname" class="form-control" placeholder="Pavardė">
+      <small class="error-message"></small>
+    </div>
 
-        <div class="row gy-4">
+    <div class="col-md-6">
+      <input type="email" id="email" class="form-control" placeholder="El. paštas">
+      <small class="error-message"></small>
+    </div>
 
-          <div class="col-lg-4">
-            <div class="info-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-geo-alt"></i>
-              </div>
-              <div>
-                <h3>Address</h3>
-                <p>2847 Oak Street, San Francisco, CA 94102</p>
-              </div>
-            </div>
+    <div class="col-md-6">
+      <input type="text" id="phone" class="form-control" placeholder="Telefono numeris">
+      <small class="error-message"></small>
+    </div>
 
-            <div class="info-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-telephone"></i>
-              </div>
-              <div>
-                <h3>Call Me</h3>
-                <p>+1 (555) 234-5678</p>
-              </div>
-            </div>
+    <div class="col-md-12">
+      <input type="text" id="address" class="form-control" placeholder="Adresas">
+      <small class="error-message"></small>
+    </div>
 
-            <div class="info-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-envelope"></i>
-              </div>
-              <div>
-                <h3>Email Me</h3>
-                <p>alex@example.com</p>
-              </div>
-            </div>
+    <div class="col-md-4">
+      <input type="number" id="q1" class="form-control" placeholder="Įvertinimas 1 (1–10)" min="1" max="10">
+      <small class="error-message"></small>
+    </div>
 
-          </div>
+    <div class="col-md-4">
+      <input type="number" id="q2" class="form-control" placeholder="Įvertinimas 2 (1–10)" min="1" max="10">
+      <small class="error-message"></small>
+    </div>
 
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form">
-              <div class="row gy-4">
+    <div class="col-md-4">
+      <input type="number" id="q3" class="form-control" placeholder="Įvertinimas 3 (1–10)" min="1" max="10">
+      <small class="error-message"></small>
+    </div>
 
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
+    <div class="col-md-12 text-center">
+      <button type="submit" id="submitBtn" class="btn btn-primary" disabled>Submit</button>
+    </div>
+  </div>
 
-                <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
+</form>
 
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
+<div id="formOutput" class="mt-4"></div>
 
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
+<div id="popupMessage" class="custom-popup">Duomenys pateikti sėkmingai!</div>
 
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
 
     </section><!-- /Contact Section -->
 
@@ -946,6 +919,7 @@ Studijų forma ir trukmė –  nuolatinės studijos (4 metai)</p>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/js/custom.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>

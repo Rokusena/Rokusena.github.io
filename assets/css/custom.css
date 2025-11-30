@@ -381,3 +381,28 @@ body {
   }
 }
 
+.custom-popup {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #10b981;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  z-index: 9999;
+}
+
+input.error {
+  border: 2px solid #e11d48 !important;
+}
+
+.error-message {
+  color: #e11d48;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+  height: 14px;
+}
