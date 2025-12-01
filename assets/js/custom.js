@@ -110,3 +110,149 @@ form.addEventListener("submit", function(e) {
   popup.style.display = "block";
   setTimeout(() => popup.style.display = "none", 2500);
 });
+
+/* ============================
+   ATMINTIES ŽAIDIMAS
+============================ */
+
+const gameBoard = document.getElementById("gameBoard");
+const movesEl = document.getElementById("moves");
+const matchesEl = document.getElementById("matches");
+const winMessage = document.getElementById("winMessage");
+const difficultySelect = document.getElementById("difficulty");
+const timerEl = document.getElementById("timer");
+
+let moves = 0;
+let matches = 0;
+let timer = 0;
+let timerInterval;
+let lockBoard = false;
+let firstCard, secondCard;
+
+const icons = ["🍎","🍌","🍒","🍇","🍓","🍉"];
+
+function setupBoard() {
+  let diff = difficultySelect.value;
+  let rows = diff === "easy" ? 3 : 4;
+  let cols = diff === "easy" ? 4 : 6;
+
+  let totalCards = rows * cols;
+
+  let selected = icons.slice(0, totalCards / 2);
+  let cards = [...selected, ...selected];
+
+  cards.sort(() => Math.random() - 0.5);
+
+  gameBoard.style.gridTemplateColumns = `repeat(${cols}, 80px)`;
+  gameBoard.innerHTML = "";
+
+  cards.forEach(icon => {
+    let card = document.createElement("div");
+    card.classList.add("card");
+    card.dataset.icon = icon;
+    card.addEventListener("click", flipCard);
+    gameBoard.appendChild(card);
+  });
+
+  moves = 0;
+  matches = 0;
+  timer = 0;
+  clearInterval(timerInterval);
+  timerEl.textContent = "0s";
+  movesEl.textContent = "0";
+  matchesEl.textContent = "0";
+  winMessage.textContent = "";
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timer++;
+    timerEl.textContent = timer + "s";
+  }, 1000);
+}
+
+function flipCard() {
+  if (lockBoard || this.classList.contains("flipped")) return;
+
+  if (moves === 0) startTimer();
+
+  this.classList.add("flipped");
+  this.textContent = this.dataset.icon;
+
+  if (!firstCard) {
+    firstCard = this;
+    return;
+  }
+
+  secondCard = this;
+  lockBoard = true;
+  moves++;
+  movesEl.textContent = moves;
+
+  checkMatch();
+}
+
+function checkMatch() {
+  if (firstCard.dataset.icon === secondCard.dataset.icon) {
+    firstCard.classList.add("matched");
+    secondCard.classList.add("matched");
+
+    matches++;
+    matchesEl.textContent = matches;
+
+    resetTurn();
+
+    checkWin();
+  } else {
+    setTimeout(() => {
+      firstCard.classList.remove("flipped");
+      secondCard.classList.remove("flipped");
+      firstCard.textContent = "";
+      secondCard.textContent = "";
+      resetTurn();
+    }, 1000);
+  }
+}
+
+function resetTurn() {
+  firstCard = null;
+  secondCard = null;
+  lockBoard = false;
+}
+
+function checkWin() {
+  let totalPairs = gameBoard.children.length / 2;
+
+  if (matches === totalPairs) {
+    winMessage.textContent = "🎉 Laimėjote!";
+    clearInterval(timerInterval);
+    saveBestResult();
+  }
+}
+
+document.getElementById("startGame").addEventListener("click", setupBoard);
+document.getElementById("resetGame").addEventListener("click", setupBoard);
+
+
+
+function saveBestResult() {
+  let diff = difficultySelect.value;
+  let key = diff === "easy" ? "bestEasy" : "bestHard";
+  let best = localStorage.getItem(key);
+
+  if (!best || moves < best) {
+    localStorage.setItem(key, moves);
+    loadBestResults();
+  }
+}
+
+function loadBestResults() {
+  document.getElementById("bestEasy").textContent =
+    localStorage.getItem("bestEasy") || "-";
+  document.getElementById("bestHard").textContent =
+    localStorage.getItem("bestHard") || "-";
+}
+
+loadBestResults();
+setupBoard();

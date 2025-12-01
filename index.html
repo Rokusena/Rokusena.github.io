@@ -837,6 +837,46 @@ Studijų forma ir trukmė –  nuolatinės studijos (4 metai)</p>
 
     </section><!-- /Contact Section -->
 
+    <section id="game" class="section">
+  <div class="container section-title" data-aos="fade-up">
+    <span class="subtitle">Mano Žaidimas</span>
+    <h2>Atminties Žaidimas</h2>
+  </div>
+
+  <div class="container" id="gameContainer">
+
+    
+    <div class="game-controls">
+      <label for="difficulty">Pasirinkite lygį:</label>
+      <select id="difficulty">
+        <option value="easy">Lengvas (4×3)</option>
+        <option value="hard">Sunkus (6×4)</option>
+      </select>
+      <button id="startGame">Start</button>
+      <button id="resetGame">Atnaujinti</button>
+    </div>
+
+    
+    <div class="game-stats">
+      <p><strong>Ėjimai:</strong> <span id="moves">0</span></p>
+      <p><strong>Sutapusios poros:</strong> <span id="matches">0</span></p>
+      <p><strong>Laikas:</strong> <span id="timer">0s</span></p>
+      <p><strong>Geriausias rezultatas (Lengvas):</strong> <span id="bestEasy">-</span></p>
+      <p><strong>Geriausias rezultatas (Sunkus):</strong> <span id="bestHard">-</span></p>
+    </div>
+
+    
+    <div id="gameBoard" class="game-board"></div>
+
+    
+    <h3 id="winMessage" class="win-message"></h3>
+  </div>
+</section>
+
+
+
+
+    
   </main>
 
   <footer id="footer" class="footer">
